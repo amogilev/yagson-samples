@@ -1,12 +1,16 @@
 package samples;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gilecode.yagson.YaGson;
+import com.gilecode.yagson.YaGsonBuilder;
+import com.gilecode.yagson.com.google.gson.reflect.TypeToken;
 import com.google.gson.Gson;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,6 +28,9 @@ public class Sample_POJOPerson {
         POJOPerson obj = new POJOPerson("John", "Doe");
 
         YaGson mapper = new YaGson();
+
+        YaGson altMapper = new YaGsonBuilder().setPrettyPrinting().create();
+
         String objJson = mapper.toJson(obj, POJOPerson.class);
         POJOPerson deserisalizedObj = mapper.fromJson(objJson, POJOPerson.class);
 
@@ -31,6 +38,8 @@ public class Sample_POJOPerson {
         System.out.println("deserisalizedObj = " + deserisalizedObj);
 
         assertEquals(obj, deserisalizedObj);
+
+        Type type = new TypeToken<HashMap<Long, String>>(){}.getType();
     }
 
     @Test
@@ -120,4 +129,5 @@ public class Sample_POJOPerson {
                     '}';
         }
     }
+
 }

@@ -1,8 +1,8 @@
 package samples;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gilecode.yagson.YaGson;
 import com.google.gson.Gson;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 
